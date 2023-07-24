@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./ControlPanel.css";
-import { Button, TextField } from "@mui/material";
+import { Button, IconButton, TextField } from "@mui/material";
 import {
   KeyboardArrowDownOutlined,
   KeyboardArrowUpOutlined,
@@ -35,21 +35,18 @@ function ControlPanel() {
         </div>
         <div className="ControlPanel_Display_Container">
           <h2>Predefined Throws</h2>
-          <Button
+          <IconButton
             variant="outlined"
-            endIcon={
-              buttonMenu_Open ? (
-                <KeyboardArrowUpOutlined />
-              ) : (
-                <KeyboardArrowDownOutlined />
-              )
-            }
             onClick={() => {
               setButtonMenu_Open(buttonMenu_Open ? false : true);
             }}
           >
-            {buttonMenu_Open ? "Close" : "Open"}
-          </Button>
+            {buttonMenu_Open ? (
+              <KeyboardArrowUpOutlined />
+            ) : (
+              <KeyboardArrowDownOutlined />
+            )}
+          </IconButton>
         </div>
       </div>
     </div>

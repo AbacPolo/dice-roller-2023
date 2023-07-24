@@ -10,18 +10,12 @@
   height: 100%;
   margin: 0;
   box-sizing: border-box;
-}
-
-.ControlPanel_InputBox_Container {
-  background-image: url("../../images/ControlPanel_Background_TOP.png");
-  background-size: 100% 100%;
-  padding-top: 1rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  border: 30px solid transparent;
+  border-image: url("../../images/ControlPanel_Background.png") 40 round;
+  background-color: #dedede;
 }
 
 .ControlPanel_Buttons_Container {
-  background-color: #dedede;
   padding-top: 0.5rem;
   box-sizing: border-box;
   height: 0;
@@ -38,18 +32,7 @@
 }
 
 .ControlPanel_Display_Container {
-  background-image: url("../../images/ControlPanel_Background_BOTTOM.png");
-  background-size: 100% 100%;
-  padding-bottom: 1rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
-  gap: 1rem;
-}
-
-.ControlPanel_Display_Container h2 {
-font-size: 1rem;
-font-weight: 500;
 }

@@ -13,10 +13,16 @@ export const controlPanelSlice = createSlice({
       "1d20",
       "1d100",
     ],
+    customButtons: [
+      { name: "test1", value: "2d20" },
+      { name: "test2", value: "2d10" },
+      { name: "test3", value: "2d6" },
+    ],
   },
   reducers: {},
 });
 
 export const getDefaultButtons = (state) => state.controlPanel.defaultButtons;
+export const getCustomButtons = (state) => state.controlPanel.customButtons;
 //export const {reducer names} = controlPanelSlice.actions;
 export default controlPanelSlice.reducer;

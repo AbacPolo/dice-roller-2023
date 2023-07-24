@@ -31,3 +31,8 @@ p {
 h1 {
   font-family: "Outfit", sans-serif;
 }
+
+h2 {
+  font-size: 1rem;
+  font-weight: 500;
+}

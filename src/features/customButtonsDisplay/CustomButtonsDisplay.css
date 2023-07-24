@@ -1,0 +1,26 @@
+.CustomButtonsDisplay_Container {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.CustomButtonsDisplay_Wrapper {
+  height: fit-content;
+  box-sizing: border-box;
+  width: 100%;
+  border: 25px solid transparent;
+  border-image: url("../../images/ButtonContainerTop.png") 30 stretch;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.CustomButtons_Container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
