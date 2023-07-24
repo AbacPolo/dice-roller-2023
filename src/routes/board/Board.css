@@ -1,0 +1,13 @@
+.Board_Container {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.Board_Wrapper{
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  box-sizing: border-box;
+}
