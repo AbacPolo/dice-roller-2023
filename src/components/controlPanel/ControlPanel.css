@@ -1,0 +1,41 @@
+.ControlPanel_Container {
+  width: 100%;
+  height: fit-content;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.ControlPanel_Wrapper {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.ControlPanel_InputBox_Container {
+  background-image: url("../../images/ControlPanel_Background_TOP.png");
+  background-size: 100% 100%;
+  padding-top: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.ControlPanel_Buttons_Container {
+  background-color: #dedede;
+  padding: 1rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.ControlPanel_Display_Container {
+  background-image: url("../../images/ControlPanel_Background_BOTTOM.png");
+  background-size: 100% 100%;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  display: flex;
+  justify-content: flex-end;
+}

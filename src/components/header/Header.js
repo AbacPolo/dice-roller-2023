@@ -1,11 +1,7 @@
 import React from "react";
 import "./Header.css";
 import { IconButton, ThemeProvider } from "@mui/material";
-import {
-  AccountCircleOutlined,
-  Login,
-  LoginOutlined,
-} from "@mui/icons-material";
+import { AccountCircleOutlined, LoginOutlined } from "@mui/icons-material";
 import { theme } from "../../styles/theme";
 import logoImage from "../../images/role-playing.png";
 
