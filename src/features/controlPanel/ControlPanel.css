@@ -22,12 +22,19 @@
 
 .ControlPanel_Buttons_Container {
   background-color: #dedede;
-  padding: 1rem;
+  padding-top: 0.5rem;
   box-sizing: border-box;
+  height: 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  overflow: hidden;
   gap: 1rem;
+}
+
+.ButtonMenu_Open {
+  height: fit-content;
+  padding: 1rem;
 }
 
 .ControlPanel_Display_Container {
@@ -38,4 +45,11 @@
   padding-right: 1rem;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+}
+
+.ControlPanel_Display_Container h2 {
+font-size: 1rem;
+font-weight: 500;
 }
