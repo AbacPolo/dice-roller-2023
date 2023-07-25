@@ -1,21 +1,22 @@
 .Header_Container {
   width: 100%;
-  height: 100%;
+  height: 5rem;
   margin: 0;
   box-sizing: border-box;
+  border: 30px solid transparent;
+  border-image: url("../../images/ControlPanel_Background_2.0.svg")
+    10 round;
 }
 
 .Header_Wrapper {
   width: 100%;
-  height: 5rem;
+  height: 100%;
   margin: 0;
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background: rgba(222, 222, 222, 1);
-  border: 30px solid transparent;
-  border-image: url("../../images/Header_Background.png") 40 round;
 }
 
 .Title_Container {

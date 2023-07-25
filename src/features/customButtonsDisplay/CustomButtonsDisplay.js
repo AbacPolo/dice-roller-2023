@@ -11,8 +11,8 @@ function CustomButtonsDisplay() {
     <div className="CustomButtonsDisplay_Container">
       <div className="CustomButtonsDisplay_Wrapper">
         <div className="CustomButtons_Container">
-          {customButtons.map(({ name, value }) => (
-            <Button variant="outlined">{name}</Button>
+          {customButtons.map(({ name, value }, index) => (
+            <Button key={index} variant="outlined">{name}</Button>
           ))}
           <Button variant="outlined">+</Button>
         </div>

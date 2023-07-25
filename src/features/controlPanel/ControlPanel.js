@@ -6,31 +6,56 @@ import {
   KeyboardArrowUpOutlined,
 } from "@mui/icons-material";
 import classNames from "classnames";
-import { useSelector } from "react-redux";
-import { getDefaultButtons } from "./controlPanelSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getDefaultButtons,
+  getRANDOMQuota,
+  getRandomIntegers,
+} from "./controlPanelSlice";
+import { diceInputFilter } from "../../helpers/diceInputFilter";
+
 function ControlPanel() {
   const [buttonMenu_Open, setButtonMenu_Open] = useState(false);
+  const [searchInput, setSearchInput] = useState("");
   const defaultButtons = useSelector(getDefaultButtons);
+  const dispatch = useDispatch();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const diceInputFiltered = diceInputFilter(searchInput);
+    dispatch(getRANDOMQuota());
+    diceInputFiltered.forEach(diceThrow => {
+      dispatch(getRandomIntegers(diceThrow));
+    });
+    setSearchInput("");
+  };
 
   return (
     <div className="ControlPanel_Container">
       <div className="ControlPanel_Wrapper">
-        <div className="ControlPanel_InputBox_Container">
+        <form
+          className="ControlPanel_InputBox_Container"
+          onSubmit={handleSubmit}
+        >
           <TextField
             id="outlined-basic"
             label="Dice to throw"
             variant="outlined"
             fullWidth
             size="small"
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.currentTarget.value)}
           />
-        </div>
+        </form>
         <div
           className={classNames("ControlPanel_Buttons_Container", {
             ButtonMenu_Open: buttonMenu_Open === true,
           })}
         >
-          {defaultButtons.map((button) => (
-            <Button variant="outlined">{button}</Button>
+          {defaultButtons.map((button, index) => (
+            <Button key={index} variant="outlined">
+              {button}
+            </Button>
           ))}
         </div>
         <div className="ControlPanel_Display_Container">

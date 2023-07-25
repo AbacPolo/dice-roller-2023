@@ -3,6 +3,8 @@
   height: fit-content;
   margin: 0;
   box-sizing: border-box;
+  border: 20px solid transparent;
+  border-image: url("../../images/ControlPanel_Background_2.0.svg") 6% 4% round;
 }
 
 .ControlPanel_Wrapper {
@@ -10,8 +12,8 @@
   height: 100%;
   margin: 0;
   box-sizing: border-box;
-  border: 30px solid transparent;
-  border-image: url("../../images/ControlPanel_Background.png") 40 round;
+  /* border: 30px solid transparent;
+  border-image: url("../../images/ControlPanel_Background.png") 40 round; */
   background-color: #dedede;
 }
 
