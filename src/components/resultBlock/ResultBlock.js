@@ -4,22 +4,53 @@ import "./ResultBlock.css";
 function ResultBlock({ individualThrow, diceResultsIndex }) {
   const className = "Dice" + individualThrow.size;
 
+  const handleAdventage = (value, individualThrow) => {
+    let advValue = null;
+    let disValue = null;
+    if (individualThrow.adv === true) {
+      advValue = Math.max(...individualThrow.value);
+    } else if (individualThrow.dis === true) {
+      disValue = Math.min(...individualThrow.value);
+    }
+    if (!advValue && !disValue) {
+      return <p>{value}</p>;
+    } else if (advValue && advValue === value) {
+      return <p>{value}</p>;
+    } else if (advValue && advValue !== value) {
+      return <p className="Discarded">{value}</p>;
+    } else if (disValue && disValue === value) {
+      return <p>{value}</p>;
+    } else if (disValue && disValue !== value) {
+      return <p className="Discarded">{value}</p>;
+    } else {
+      return;
+    }
+  };
+  
   return (
     <div className="ResultBlock_Container">
-      {individualThrow.value.map((element, index) =>
+      {individualThrow.value.map((value, index) =>
         index === 0 && diceResultsIndex === 0 ? (
           <div key={index} className="Dice_Container">
-            <div className={`Dice ${className}`}><p>{element}</p></div>
+            <div className={`Dice ${className}`}>
+              {handleAdventage(value, individualThrow)}
+            </div>
           </div>
         ) : (
           <div key={index} className="Dice_Container">
-            + <div className={`Dice ${className}`}><p>{element}</p></div>
+            +{" "}
+            <div className={`Dice ${className}`}>
+              {handleAdventage(value, individualThrow)}
+            </div>
           </div>
         )
       )}
       {individualThrow.plus !== 0 ? (
         <div className="Plus_Container">
-          + <div className={`Dice`}><p>{individualThrow.plus}</p></div>
+          +{" "}
+          <div className={`Dice`}>
+            <p>{individualThrow.plus}</p>
+          </div>
         </div>
       ) : null}
     </div>

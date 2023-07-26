@@ -1,37 +1,9 @@
 import React from "react";
 import "./ResultCard.css";
 import ResultBlock from "../resultBlock/ResultBlock";
+import {finalResultCalculator} from "../../helpers/finalResultCalculator"
 
 function ResultCard({ diceResults }) {
-  console.log("ResultCard", diceResults);
-
-  const finalResultCalculator = (diceResults) => {
-    let finalResult = 0;
-    diceResults.forEach((element) => {
-      if (element.value.length === 1) {
-        finalResult = finalResult + element.value[0];
-        console.log("finalResult", finalResult);
-      } else if (element.value.length > 1) {
-        if (element.adv === true) {
-          finalResult += Math.max(...element.value);
-          console.log("finalResult", finalResult);
-        } else if (element.dis === true) {
-          finalResult += Math.min(...element.value);
-          console.log("finalResult", finalResult);
-        } else {
-          finalResult += element.value.reduce(
-            (accumulator, currentValue) => accumulator + currentValue,
-            0
-          );
-          console.log("finalResult", finalResult);
-        }
-      }
-      if (element.plus !== 0) {
-        finalResult += parseInt(element.plus, 10);
-      }
-    });
-    return finalResult;
-  };
 
   return (
     <div className="ResultCard_Container">

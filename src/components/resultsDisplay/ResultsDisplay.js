@@ -10,8 +10,6 @@ import ResultCard from "../resultCard/ResultCard";
 function ResultsDisplay() {
   const diceResults = useSelector(getDiceResults);
   const resultsHstory = useSelector(getResultsHstory);
-  console.log("ResultsDisplay", diceResults);
-
   return (
     <div className="ResultsDisplay_Container">
       <div className="ResultsDisplay_Wrapper">
