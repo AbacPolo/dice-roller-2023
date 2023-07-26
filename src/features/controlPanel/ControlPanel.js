@@ -17,18 +17,24 @@ import { diceInputFilter } from "../../helpers/diceInputFilter";
 function ControlPanel() {
   const [buttonMenu_Open, setButtonMenu_Open] = useState(false);
   const [searchInput, setSearchInput] = useState("");
+  const [inputError, setInputError] = useState(false);
   const defaultButtons = useSelector(getDefaultButtons);
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (searchInput !== '') {
+      setInputError(false);
       const diceInputFiltered = diceInputFilter(searchInput);
-      dispatch(getRANDOMQuota());
-      diceInputFiltered.forEach(diceThrow => {
-        dispatch(getRandomIntegers(diceThrow));
-      });
-      setSearchInput("");
+      if (diceInputFiltered !== 'error') {
+        dispatch(getRANDOMQuota());
+        diceInputFiltered.forEach(diceThrow => {
+          dispatch(getRandomIntegers(diceThrow));
+        });
+        setSearchInput("");
+      } else {
+        setInputError(true);
+      };
     }
   };
 
@@ -41,12 +47,14 @@ function ControlPanel() {
         >
           <TextField
             id="outlined-basic"
-            label="Dice to throw"
+            label={!inputError ? "Dice to throw" : 'You fumbled the throw'}
             variant="outlined"
             fullWidth
             size="small"
             value={searchInput}
             onChange={(e) => setSearchInput(e.currentTarget.value)}
+            error={inputError}
+            helperText={inputError ? 'Incorrect entry. Try with another input.' : ''}
           />
         </form>
         <div
