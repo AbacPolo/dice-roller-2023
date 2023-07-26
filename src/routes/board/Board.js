@@ -3,6 +3,7 @@ import "./Board.css";
 import Header from "../../components/header/Header";
 import ControlPanel from "../../features/controlPanel/ControlPanel";
 import CustomButtonsDisplay from "../../features/customButtonsDisplay/CustomButtonsDisplay";
+import ResultsDisplay from "../../components/resultsDisplay/ResultsDisplay";
 
 function Board() {
   return (
@@ -11,6 +12,7 @@ function Board() {
         <Header />
         <ControlPanel />
         <CustomButtonsDisplay />
+        <ResultsDisplay />
       </div>
     </div>
   );

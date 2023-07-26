@@ -3,12 +3,15 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const getRandomIntegers = createAsyncThunk(
   "controlPanel/getRandomIntegers",
   async (diceThrow) => {
-    console.log('diceThrow',diceThrow);
-    const data = await fetch(`https://www.random.org/integers/?num=${diceThrow.quantity}&min=1&max=${diceThrow.size}&col=${diceThrow.size}&base=10&format=plain&rnd=new`);
+    const data = await fetch(
+      `https://www.random.org/integers/?num=${diceThrow.quantity}&min=1&max=${diceThrow.size}&col=${diceThrow.quantity}&base=10&format=plain&rnd=new`
+    );
     const text = await data.text();
     const filteredText = text.replaceAll(/\t|\n/g, " ").slice(0, -1);
-    const arrayOfIntegers = filteredText.split(" ");
-    const diceThrowResult = {...diceThrow, value: arrayOfIntegers}
+    const arrayOfIntegers = filteredText.split(" ").map(function (item) {
+      return parseInt(item, 10);
+    });
+    const diceThrowResult = { ...diceThrow, value: arrayOfIntegers };
     return diceThrowResult;
   }
 );
@@ -19,6 +22,7 @@ export const getRANDOMQuota = createAsyncThunk(
     const data = await fetch(`https://www.random.org/quota/?format=plain`);
     const text = await data.text();
     console.log("quota", text);
+    return text;
   }
 );
 
@@ -40,13 +44,13 @@ export const controlPanelSlice = createSlice({
       { name: "test2", value: "2d10" },
       { name: "test3", value: "2d6" },
     ],
-    quota: '',
+    quota: "",
     isLoadingQuota: false,
     loadingQuotaHasError: false,
     diceResults: [],
     isLoadingResults: false,
     loadingResultsHasError: false,
-    resultsHstory: []
+    resultsHstory: [],
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -88,5 +92,7 @@ export const controlPanelSlice = createSlice({
 
 export const getDefaultButtons = (state) => state.controlPanel.defaultButtons;
 export const getCustomButtons = (state) => state.controlPanel.customButtons;
-//export const {reducer names} = controlPanelSlice.actions;
+export const getDiceResults = (state) => state.controlPanel.diceResults;
+export const getResultsHstory = (state) => state.controlPanel.resultsHstory;
+// export const {} = controlPanelSlice.actions;
 export default controlPanelSlice.reducer;

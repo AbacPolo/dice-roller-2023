@@ -22,12 +22,14 @@ function ControlPanel() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const diceInputFiltered = diceInputFilter(searchInput);
-    dispatch(getRANDOMQuota());
-    diceInputFiltered.forEach(diceThrow => {
-      dispatch(getRandomIntegers(diceThrow));
-    });
-    setSearchInput("");
+    if (searchInput !== '') {
+      const diceInputFiltered = diceInputFilter(searchInput);
+      dispatch(getRANDOMQuota());
+      diceInputFiltered.forEach(diceThrow => {
+        dispatch(getRandomIntegers(diceThrow));
+      });
+      setSearchInput("");
+    }
   };
 
   return (

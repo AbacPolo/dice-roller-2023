@@ -9,6 +9,7 @@ export const diceInputFilter = (searchInput) => {
         inputArray[index + 1].includes("d") === true
       ) {
         objectsArray.push({
+          diceThrow: searchInput,
           quantity: throwArray[0],
           size: throwArray[1],
           plus: 0,
@@ -18,6 +19,7 @@ export const diceInputFilter = (searchInput) => {
         });
       } else {
         objectsArray.push({
+          diceThrow: searchInput,
           quantity: throwArray[0],
           size: throwArray[1],
           plus: inputArray[index + 1],
