@@ -39,11 +39,7 @@ export const controlPanelSlice = createSlice({
       "1d20",
       "1d100",
     ],
-    customButtons: [
-      { name: "test1", value: "2d20" },
-      { name: "test2", value: "2d10" },
-      { name: "test3", value: "2d6" },
-    ],
+    customButtons: [],
     quota: "",
     isLoadingQuota: false,
     loadingQuotaHasError: false,
@@ -52,7 +48,14 @@ export const controlPanelSlice = createSlice({
     loadingResultsHasError: false,
     resultsHstory: [],
   },
-  reducers: {},
+  reducers: {
+    createCustomButton: (state, action) => {
+      state.customButtons = [
+        ...state.customButtons,
+        { name: action.payload.name, value: action.payload.value },
+      ];
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getRandomIntegers.pending, (state) => {
@@ -72,20 +75,19 @@ export const controlPanelSlice = createSlice({
       .addCase(getRANDOMQuota.pending, (state) => {
         state.isLoadingQuota = true;
         state.loadingQuotaHasError = false;
-      })
-      .addCase(getRANDOMQuota.fulfilled, (state, action) => {
-        state.isLoadingQuota = false;
-        state.loadingQuotaHasError = false;
-        state.quota = action.payload;
         if (state.diceResults.length > 0) {
           state.resultsHstory = [state.diceResults, ...state.resultsHstory];
           state.diceResults = [];
         }
       })
+      .addCase(getRANDOMQuota.fulfilled, (state, action) => {
+        state.isLoadingQuota = false;
+        state.loadingQuotaHasError = false;
+        state.quota = action.payload;
+      })
       .addCase(getRANDOMQuota.rejected, (state) => {
         state.isLoadingQuota = false;
         state.loadingQuotaHasError = true;
-        state.posts = {};
       });
   },
 });
@@ -94,5 +96,5 @@ export const getDefaultButtons = (state) => state.controlPanel.defaultButtons;
 export const getCustomButtons = (state) => state.controlPanel.customButtons;
 export const getDiceResults = (state) => state.controlPanel.diceResults;
 export const getResultsHstory = (state) => state.controlPanel.resultsHstory;
-// export const {} = controlPanelSlice.actions;
+export const { createCustomButton } = controlPanelSlice.actions;
 export default controlPanelSlice.reducer;

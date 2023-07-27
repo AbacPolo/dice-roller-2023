@@ -22,12 +22,15 @@
   gap: 6px;
 }
 
-.ResultCard_Title {
+.ResultCard_Header {
   position: absolute;
   top: -1.2rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.ResultCard_Header_Content {
   height: 1.5rem;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
   background-color: #dedede;
   border: 1px solid #fff;
   border-top-left-radius: 8px;
@@ -37,6 +40,16 @@
   font-size: 1rem;
   font-weight: 500;
   line-height: 1.5rem;
+}
+
+.ResultCard_Header_Title {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.ResultCard_Header_Save {
+  display: flex;
+  align-items: center;
 }
 
 .ResultDice_Container {

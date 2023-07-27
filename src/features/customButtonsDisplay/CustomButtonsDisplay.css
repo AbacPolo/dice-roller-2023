@@ -3,8 +3,8 @@
   height: fit-content;
   margin: 0;
   box-sizing: border-box;
-  border: 20px solid transparent;
-  border-image: url("../../images/Border_1.svg") 15 stretch;
+  border: 22px solid transparent;
+  border-image: url("../../images/Border_1.svg") 10% round;
 }
 
 .CustomButtonsDisplay_Wrapper {
@@ -12,7 +12,8 @@
   box-sizing: border-box;
   width: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
   background-color: #fff;

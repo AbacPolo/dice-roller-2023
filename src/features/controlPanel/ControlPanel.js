@@ -23,19 +23,37 @@ function ControlPanel() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (searchInput !== '') {
+    if (searchInput !== "") {
       setInputError(false);
       const diceInputFiltered = diceInputFilter(searchInput);
-      if (diceInputFiltered !== 'error') {
+      if (diceInputFiltered !== "error") {
         dispatch(getRANDOMQuota());
-        diceInputFiltered.forEach(diceThrow => {
+        diceInputFiltered.forEach((diceThrow) => {
           dispatch(getRandomIntegers(diceThrow));
         });
         setSearchInput("");
       } else {
         setInputError(true);
-      };
+      }
     }
+  };
+
+  const handleOnChange = (e) => {
+    const searchInputCheck = diceInputFilter(e.currentTarget.value);
+    if (searchInputCheck !== 'error' || e.currentTarget.value === '') {
+      setInputError(false);
+      setSearchInput(e.currentTarget.value);
+    } else if (searchInputCheck === 'error') {
+      setInputError(true);
+      setSearchInput(e.currentTarget.value);
+    }
+  }
+
+  const handleButtonClick = (button) => {
+    console.log('button',button);
+    const diceInputFiltered = diceInputFilter(button);
+    dispatch(getRANDOMQuota());
+    dispatch(getRandomIntegers(diceInputFiltered[0]));
   };
 
   return (
@@ -47,14 +65,16 @@ function ControlPanel() {
         >
           <TextField
             id="outlined-basic"
-            label={!inputError ? "Dice to throw" : 'You fumbled the throw'}
+            label={!inputError ? "Dice to throw" : "You fumbled the throw"}
             variant="outlined"
             fullWidth
             size="small"
             value={searchInput}
-            onChange={(e) => setSearchInput(e.currentTarget.value)}
+            onChange={handleOnChange}
             error={inputError}
-            helperText={inputError ? 'Incorrect entry. Try with another input.' : ''}
+            helperText={
+              inputError ? "Incorrect entry. Try with another input." : ""
+            }
           />
         </form>
         <div
@@ -63,7 +83,7 @@ function ControlPanel() {
           })}
         >
           {defaultButtons.map((button, index) => (
-            <Button key={index} variant="outlined">
+            <Button key={index} variant="outlined" onClick={() => handleButtonClick(button)}>
               {button}
             </Button>
           ))}

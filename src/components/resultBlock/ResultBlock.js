@@ -4,7 +4,7 @@ import "./ResultBlock.css";
 function ResultBlock({ individualThrow, diceResultsIndex }) {
   const className = "Dice" + individualThrow.size;
 
-  const handleAdventage = (value, individualThrow) => {
+  const handlePrintStyle = (value, individualThrow) => {
     let advValue = null;
     let disValue = null;
     if (individualThrow.adv === true) {
@@ -14,33 +14,35 @@ function ResultBlock({ individualThrow, diceResultsIndex }) {
     }
     if (!advValue && !disValue) {
       return <p>{value}</p>;
-    } else if (advValue && advValue === value) {
+    } else if (
+      (advValue && advValue === value) ||
+      (disValue && disValue === value)
+    ) {
       return <p>{value}</p>;
-    } else if (advValue && advValue !== value) {
-      return <p className="Discarded">{value}</p>;
-    } else if (disValue && disValue === value) {
-      return <p>{value}</p>;
-    } else if (disValue && disValue !== value) {
+    } else if (
+      (advValue && advValue !== value) ||
+      (disValue && disValue !== value)
+    ) {
       return <p className="Discarded">{value}</p>;
     } else {
       return;
     }
   };
-  
+
   return (
     <div className="ResultBlock_Container">
       {individualThrow.value.map((value, index) =>
         index === 0 && diceResultsIndex === 0 ? (
           <div key={index} className="Dice_Container">
             <div className={`Dice ${className}`}>
-              {handleAdventage(value, individualThrow)}
+              {handlePrintStyle(value, individualThrow)}
             </div>
           </div>
         ) : (
           <div key={index} className="Dice_Container">
-            +{" "}
+            +
             <div className={`Dice ${className}`}>
-              {handleAdventage(value, individualThrow)}
+              {handlePrintStyle(value, individualThrow)}
             </div>
           </div>
         )

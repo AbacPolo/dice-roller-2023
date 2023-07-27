@@ -2,7 +2,6 @@ export const diceInputFilter = (searchInput) => {
   let objectsArray = [];
 
   if (!parseInt(searchInput[0], 10)) {
-    console.log('!parseInt(searchInput[0], 10)')
     return 'error';
   } 
 
