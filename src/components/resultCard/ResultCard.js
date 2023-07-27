@@ -5,6 +5,7 @@ import { finalResultCalculator } from "../../helpers/finalResultCalculator";
 import { IconButton } from "@mui/material";
 import SaveOutlinedIcon from "@mui/icons-material/SaveOutlined";
 import CreateCustomButton from "../createCustomButton/CreateCustomButton";
+import { criticalDetector } from "../../helpers/criticalDetector";
 
 function ResultCard({ diceResults }) {
   const [openDialog, setOpenDialog] = useState(false);
@@ -16,7 +17,7 @@ function ResultCard({ diceResults }) {
   const handleCloseDialog = () => {
     setOpenDialog(false)
   }
-
+  console.log('criticalDetector(diceResults)',criticalDetector(diceResults));
   return (
     <div className="ResultCard_Container">
       <div className="ResultCard_Wrapper">

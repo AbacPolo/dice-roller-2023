@@ -1,5 +1,6 @@
 import React from "react";
 import "./ResultBlock.css";
+import { criticalDetector } from "../../helpers/criticalDetector";
 
 function ResultBlock({ individualThrow, diceResultsIndex }) {
   const className = "Dice" + individualThrow.size;
@@ -13,12 +14,12 @@ function ResultBlock({ individualThrow, diceResultsIndex }) {
       disValue = Math.min(...individualThrow.value);
     }
     if (!advValue && !disValue) {
-      return <p>{value}</p>;
+      return <p className={criticalDetector([individualThrow]) && value === 20 ? 'criticalHit' : null}>{value}</p>;
     } else if (
       (advValue && advValue === value) ||
       (disValue && disValue === value)
     ) {
-      return <p>{value}</p>;
+      return <p className={criticalDetector([individualThrow]) && value === 20 ? 'criticalHit' : null}>{value}</p>;
     } else if (
       (advValue && advValue !== value) ||
       (disValue && disValue !== value)
