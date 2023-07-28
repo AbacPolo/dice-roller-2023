@@ -25,8 +25,13 @@ function ControlPanel() {
     e.preventDefault();
     if (searchInput !== "") {
       setInputError(false);
+      const searchInputLength = searchInput.split("+").length;
       const diceInputFiltered = diceInputFilter(searchInput);
-      if (diceInputFiltered !== "error") {
+      if (
+        diceInputFiltered !== "error" &&
+        diceInputFiltered.length !== 0 &&
+        diceInputFiltered.length === searchInputLength
+      ) {
         dispatch(getRANDOMQuota());
         diceInputFiltered.forEach((diceThrow) => {
           dispatch(getRandomIntegers(diceThrow));
@@ -40,17 +45,17 @@ function ControlPanel() {
 
   const handleOnChange = (e) => {
     const searchInputCheck = diceInputFilter(e.currentTarget.value);
-    if (searchInputCheck !== 'error' || e.currentTarget.value === '') {
+    if (searchInputCheck !== "error" || e.currentTarget.value === "") {
       setInputError(false);
       setSearchInput(e.currentTarget.value);
-    } else if (searchInputCheck === 'error') {
+    } else if (searchInputCheck === "error") {
       setInputError(true);
       setSearchInput(e.currentTarget.value);
     }
-  }
+  };
 
   const handleButtonClick = (button) => {
-    console.log('button',button);
+    console.log("button", button);
     const diceInputFiltered = diceInputFilter(button);
     dispatch(getRANDOMQuota());
     dispatch(getRandomIntegers(diceInputFiltered[0]));
@@ -83,7 +88,11 @@ function ControlPanel() {
           })}
         >
           {defaultButtons.map((button, index) => (
-            <Button key={index} variant="outlined" onClick={() => handleButtonClick(button)}>
+            <Button
+              key={index}
+              variant="outlined"
+              onClick={() => handleButtonClick(button)}
+            >
               {button}
             </Button>
           ))}
