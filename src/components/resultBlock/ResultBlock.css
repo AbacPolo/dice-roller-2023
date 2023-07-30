@@ -1,17 +1,23 @@
 .ResultBlock_Container {
   display: flex;
-  gap: 6px;
+  gap: 4px;
 }
 
 .Dice_Container {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
 }
 
 .Plus_Container {
   display: flex;
   align-items: center;
+}
+
+.Plus_Container .Dice  {
+  width: fit-content;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 
 .Dice {

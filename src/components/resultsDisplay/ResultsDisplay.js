@@ -13,9 +13,9 @@ function ResultsDisplay() {
   return (
     <div className="ResultsDisplay_Container">
       <div className="ResultsDisplay_Wrapper">
-        {diceResults.length > 0 && <ResultCard diceResults={diceResults} />}
+        {diceResults.length > 0 && <ResultCard diceResults={diceResults} first={true}/>}
         {resultsHstory.map((prevResults, index) => (
-          <ResultCard key={index} diceResults={prevResults} />
+          <ResultCard key={index} diceResults={prevResults} first={false}/>
         ))}
       </div>
     </div>
