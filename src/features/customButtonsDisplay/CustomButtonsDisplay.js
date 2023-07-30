@@ -1,31 +1,46 @@
 import React, { useState } from "react";
 import "./CustomButtonsDisplay.css";
-import { Button } from "@mui/material";
-import { getCustomButtons, getRANDOMQuota, getRandomIntegers } from "../controlPanel/controlPanelSlice";
+import { Button, IconButton } from "@mui/material";
+import {
+  deleteCustomButton,
+  getCustomButtons,
+  getRANDOMQuota,
+  getRandomIntegers,
+} from "../controlPanel/controlPanelSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 import CreateCustomButton from "../../components/createCustomButton/CreateCustomButton";
 import { diceInputFilter } from "../../helpers/diceInputFilter";
+import {
+  DeleteOutlineOutlined,
+  DoneOutlineOutlined,
+  EditOutlined,
+} from "@mui/icons-material";
 
 function CustomButtonsDisplay() {
   const customButtons = useSelector(getCustomButtons);
   const [openDialog, setOpenDialog] = useState(false);
+  const [deleteButton, setDeleteButton] = useState(false);
   const dispatch = useDispatch();
 
   const handleOpenDialog = () => {
-    setOpenDialog(true)
-  }
+    setOpenDialog(true);
+  };
 
   const handleCloseDialog = () => {
-    setOpenDialog(false)
-  }
+    setOpenDialog(false);
+  };
 
   const handleButtonClick = (value) => {
-    const diceInputFiltered = diceInputFilter(value)
+    const diceInputFiltered = diceInputFilter(value);
     dispatch(getRANDOMQuota());
     diceInputFiltered.forEach((diceThrow) => {
       dispatch(getRandomIntegers(diceThrow));
     });
+  };
+
+  const handleButtonDelete = (name) => {
+    dispatch(deleteCustomButton(name));
   };
 
   return (
@@ -33,16 +48,55 @@ function CustomButtonsDisplay() {
       <div className="CustomButtonsDisplay_Wrapper">
         <div className="CustomButtons_Container">
           {customButtons.map(({ name, value }, index) => (
-            <Button key={index} variant="outlined" onClick={() => handleButtonClick(value)}>
+            <Button
+              key={index}
+              variant="contained"
+              disableElevation={deleteButton ? false : true}
+              color={deleteButton ? "error" : "primary"}
+              onClick={
+                deleteButton
+                  ? () => handleButtonDelete(name)
+                  : () => handleButtonClick(value)
+              }
+              endIcon={
+                deleteButton ? <DeleteOutlineOutlined fontSize="small" /> : null
+              }
+              sx={{ lineHeight: 1.5, padding: "10px 16px" }}
+            >
               {name}
             </Button>
           ))}
         </div>
         <Button variant="outlined" onClick={handleOpenDialog}>
-            +
-          </Button>
-        <h2>Custom Throws</h2>
-        <CreateCustomButton buttonValue={''} openDialog={openDialog} handleCloseDialog={handleCloseDialog} />
+          +
+        </Button>
+        <div className="CustomThrows_Title">
+          <h2>Custom Throws</h2>
+          {deleteButton ? (
+            <IconButton
+              aria-label="delete"
+              color="primary"
+              size="small"
+              onClick={() => setDeleteButton(false)}
+            >
+              <DoneOutlineOutlined fontSize="small" />
+            </IconButton>
+          ) : (
+            <IconButton
+              aria-label="delete"
+              color="primary"
+              size="small"
+              onClick={() => setDeleteButton(true)}
+            >
+              <EditOutlined fontSize="small" />
+            </IconButton>
+          )}
+        </div>
+        <CreateCustomButton
+          buttonValue={""}
+          openDialog={openDialog}
+          handleCloseDialog={handleCloseDialog}
+        />
       </div>
     </div>
   );

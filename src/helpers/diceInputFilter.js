@@ -12,7 +12,6 @@ export const diceInputFilter = (searchInput) => {
   }
 
   const inputArray = searchInput.split("+");
-  console.log('inputArray',inputArray);
   inputArray.forEach((cell, index) => {
     if (cell.includes("d")) {
       const adventage = cell.includes("adv") ? true : false;
@@ -21,7 +20,6 @@ export const diceInputFilter = (searchInput) => {
         .replaceAll("adv", "")
         .replaceAll("dis", "")
         .split("d");
-      console.log('throwArray',throwArray);
       if(throwArray[1] === '' || throwArray.length > 2) {
         return 'error';
       }
@@ -43,6 +41,5 @@ export const diceInputFilter = (searchInput) => {
     }
   });
   
-  console.log('objectsArray',objectsArray);
   return objectsArray;
 };

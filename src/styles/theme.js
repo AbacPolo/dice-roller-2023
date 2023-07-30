@@ -20,8 +20,6 @@ export const theme = createTheme({
         root: {
           textTransform: "initial",
           fontSize: "1rem",
-          lineHeight: "1rem",
-          borderRadius: "1rem",
         },
       },
     },

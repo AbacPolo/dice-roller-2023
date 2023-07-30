@@ -55,6 +55,9 @@ export const controlPanelSlice = createSlice({
         { name: action.payload.name, value: action.payload.value },
       ];
     },
+    deleteCustomButton: (state, action) => {
+      state.customButtons = state.customButtons.filter(button => button.name !== action.payload)
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -96,5 +99,5 @@ export const getDefaultButtons = (state) => state.controlPanel.defaultButtons;
 export const getCustomButtons = (state) => state.controlPanel.customButtons;
 export const getDiceResults = (state) => state.controlPanel.diceResults;
 export const getResultsHstory = (state) => state.controlPanel.resultsHstory;
-export const { createCustomButton } = controlPanelSlice.actions;
+export const { createCustomButton, deleteCustomButton } = controlPanelSlice.actions;
 export default controlPanelSlice.reducer;

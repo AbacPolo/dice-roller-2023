@@ -25,7 +25,7 @@ function ControlPanel() {
     e.preventDefault();
     if (searchInput !== "") {
       setInputError(false);
-      const searchInputLength = searchInput.split("+").length;
+      const searchInputLength = searchInput.split("+").filter(string => string.includes('d')).length;
       const diceInputFiltered = diceInputFilter(searchInput);
       if (
         diceInputFiltered !== "error" &&
@@ -55,7 +55,6 @@ function ControlPanel() {
   };
 
   const handleButtonClick = (button) => {
-    console.log("button", button);
     const diceInputFiltered = diceInputFilter(button);
     dispatch(getRANDOMQuota());
     dispatch(getRandomIntegers(diceInputFiltered[0]));
@@ -90,8 +89,11 @@ function ControlPanel() {
           {defaultButtons.map((button, index) => (
             <Button
               key={index}
-              variant="outlined"
+              variant="contained"
+              disableElevation
               onClick={() => handleButtonClick(button)}
+              sx={{lineHeight: 1.5,
+              padding: '10px 16px'}}
             >
               {button}
             </Button>
