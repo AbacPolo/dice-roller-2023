@@ -6,9 +6,12 @@ import { IconButton } from "@mui/material";
 import SaveOutlinedIcon from "@mui/icons-material/SaveOutlined";
 import CreateCustomButton from "../createCustomButton/CreateCustomButton";
 import classNames from "classnames";
+import { getUserLogIn } from "../../routes/board/diceBoardSlice";
+import { useSelector } from "react-redux";
 
 function ResultCard({ diceResults, first }) {
   const [openDialog, setOpenDialog] = useState(false);
+  const isUserLogged = useSelector(getUserLogIn);
 
   const handleOpenDialog = () => {
     setOpenDialog(true);
@@ -18,7 +21,7 @@ function ResultCard({ diceResults, first }) {
     setOpenDialog(false);
   };
 
-   return (
+  return (
     <div
       className={classNames("ResultCard_Container", {
         ResultCard_Container_First: first === true,
@@ -36,23 +39,25 @@ function ResultCard({ diceResults, first }) {
           >
             {diceResults[0].diceThrow}
           </h3>
-          <div
-            className={classNames(
-              "ResultCard_Header_Content ResultCard_Header_Save",
-              {
-                ResultCard_Header_Content_First: first === true,
-              }
-            )}
-          >
-            <IconButton
-              color="primary"
-              className="Save_Button"
-              sx={{ padding: "0px 4px" }}
-              onClick={handleOpenDialog}
+          {isUserLogged ? (
+            <div
+              className={classNames(
+                "ResultCard_Header_Content ResultCard_Header_Save",
+                {
+                  ResultCard_Header_Content_First: first === true,
+                }
+              )}
             >
-              <SaveOutlinedIcon fontSize="small" />
-            </IconButton>
-          </div>
+              <IconButton
+                color="primary"
+                className="Save_Button"
+                sx={{ padding: "0px 4px" }}
+                onClick={handleOpenDialog}
+              >
+                <SaveOutlinedIcon fontSize="small" />
+              </IconButton>
+            </div>
+          ) : null}
         </div>
         <div className="ResultDice_Container">
           {diceResults.map((individualThrow, index) => (

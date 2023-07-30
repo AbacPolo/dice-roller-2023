@@ -6,7 +6,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "./index.css";
 import { HashRouter, Routes, Route } from "react-router-dom";
-import Board from "./routes/board/Board";
+import Board from "./routes/board/DiceBoard";
 
 const container = document.getElementById("root");
 const root = createRoot(container);
