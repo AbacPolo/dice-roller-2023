@@ -54,9 +54,29 @@ export const controlPanelSlice = createSlice({
         ...state.customButtons,
         { name: action.payload.name, value: action.payload.value },
       ];
+      localStorage.setItem(
+        `${action.payload.loggedInUser}_CustomButtons`,
+        JSON.stringify(state.customButtons)
+      );
     },
     deleteCustomButton: (state, action) => {
-      state.customButtons = state.customButtons.filter(button => button.name !== action.payload)
+      state.customButtons = state.customButtons.filter(
+        (button) => button.name !== action.payload.name
+      );
+      localStorage.setItem(
+        `${action.payload.loggedInUser}_CustomButtons`,
+        JSON.stringify(state.customButtons)
+      );
+    },
+    fetchCustomButtons: (state, action) => {
+      const storedCustomButtons = JSON.parse(
+        localStorage.getItem(`${action.payload}_CustomButtons`)
+      );
+      if (storedCustomButtons) {
+        state.customButtons = storedCustomButtons;
+      } else {
+        state.customButtons = [];
+      }
     },
   },
   extraReducers: (builder) => {
@@ -99,6 +119,8 @@ export const getDefaultButtons = (state) => state.controlPanel.defaultButtons;
 export const getCustomButtons = (state) => state.controlPanel.customButtons;
 export const getDiceResults = (state) => state.controlPanel.diceResults;
 export const getResultsHstory = (state) => state.controlPanel.resultsHstory;
-export const getIsLoadingResults = (state) => state.controlPanel.isLoadingResults;
-export const { createCustomButton, deleteCustomButton } = controlPanelSlice.actions;
+export const getIsLoadingResults = (state) =>
+  state.controlPanel.isLoadingResults;
+export const { createCustomButton, deleteCustomButton, fetchCustomButtons } =
+  controlPanelSlice.actions;
 export default controlPanelSlice.reducer;

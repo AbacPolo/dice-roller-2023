@@ -6,12 +6,12 @@ import { IconButton } from "@mui/material";
 import SaveOutlinedIcon from "@mui/icons-material/SaveOutlined";
 import CreateCustomButton from "../createCustomButton/CreateCustomButton";
 import classNames from "classnames";
-import { getUserLogIn } from "../../routes/board/diceBoardSlice";
+import { getIsUserLogged } from "../../routes/board/diceBoardSlice";
 import { useSelector } from "react-redux";
 
 function ResultCard({ diceResults, first }) {
   const [openDialog, setOpenDialog] = useState(false);
-  const isUserLogged = useSelector(getUserLogIn);
+  const isUserLogged = useSelector(getIsUserLogged);
 
   const handleOpenDialog = () => {
     setOpenDialog(true);

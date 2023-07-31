@@ -1,0 +1,17 @@
+.Dialog_Wrapper {
+    background-color: #fff;
+}
+
+.NewProfileButton_Container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 6px;
+}
+
+.NewProfileButton_Container {
+  padding-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+

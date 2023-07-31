@@ -1,17 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Header.css";
 import { IconButton } from "@mui/material";
 import { AccountCircleOutlined, LoginOutlined } from "@mui/icons-material";
 import logoImage from "../../images/role-playing.png";
-import { getUserLogIn, setLogInState } from "../../routes/board/diceBoardSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { fetchProfiles, getIsUserLogged } from "../../routes/board/diceBoardSlice";
+import {  useDispatch, useSelector } from "react-redux";
+import LogInMenu from "../logInMenu/LogInMenu";
 
 function Header() {
-  const isUserLogged = useSelector(getUserLogIn);
+  const isUserLogged = useSelector(getIsUserLogged);
+  const [openDialog, setOpenDialog] = useState(false);
   const dispatch = useDispatch();
 
-  const handleLoggIn = () => {
-    dispatch(setLogInState(true));
+  const handleOpenDialog = () => {
+    dispatch(fetchProfiles());
+    setOpenDialog(true);
+  };
+
+  const handleCloseDialog = () => {
+    setOpenDialog(false);
   };
 
   return (
@@ -20,7 +27,7 @@ function Header() {
         <IconButton
           color="primary"
           className="Login_Button"
-          onClick={handleLoggIn}
+          onClick={handleOpenDialog}
         >
           <LoginOutlined />
         </IconButton>
@@ -31,6 +38,10 @@ function Header() {
         <IconButton color="primary" disabled={isUserLogged ? false : true}>
           <AccountCircleOutlined />
         </IconButton>
+        <LogInMenu
+          openDialog={openDialog}
+          handleCloseDialog={handleCloseDialog}
+        />
       </div>
     </div>
   );

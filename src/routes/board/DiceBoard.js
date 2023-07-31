@@ -7,10 +7,10 @@ import ResultsDisplay from "../../components/resultsDisplay/ResultsDisplay";
 import { theme } from "../../styles/theme";
 import { ThemeProvider } from "@mui/material";
 import { useSelector } from "react-redux";
-import { getUserLogIn } from "./diceBoardSlice";
+import { getIsUserLogged } from "./diceBoardSlice";
 
 function Board() {
-  const isUserLogged = useSelector(getUserLogIn);
+  const isUserLogged = useSelector(getIsUserLogged);
   return (
     <ThemeProvider theme={theme}>
       <div className="Board_Container">
@@ -18,7 +18,6 @@ function Board() {
           <Header />
           <ControlPanel />
           {isUserLogged ? <CustomButtonsDisplay /> : null}
-
           <ResultsDisplay />
         </div>
       </div>

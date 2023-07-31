@@ -9,10 +9,6 @@
   & .MuiDialogTitle-root {
     padding-top: 0px;
   }
-
-  & .MuiDialogActions-root {
-    padding-bottom: 0px;
-  }
 }
 
 .Dialog_Form {

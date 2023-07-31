@@ -9,8 +9,9 @@ import {
   DialogContent,
   TextField,
 } from "@mui/material";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createCustomButton } from "../../features/controlPanel/controlPanelSlice";
+import { getLoggedInUser } from "../../routes/board/diceBoardSlice";
 
 function CreateCustomButton({ buttonValue, openDialog, handleCloseDialog }) {
   const [buttonNameInput, setButtonNameInput] = useState("");
@@ -18,9 +19,10 @@ function CreateCustomButton({ buttonValue, openDialog, handleCloseDialog }) {
   const [buttonValueInput, setButtonValueInput] = useState("");
   const [valueInputError, setValueInputError] = useState(false);
   const [buttonDisabled, setButtonDisabled] = useState(true);
+  const loggedInUser = useSelector(getLoggedInUser);
   const dispatch = useDispatch();
 
-  if (buttonValue !== "" && buttonValueInput === "") {
+  if (buttonValue !== '' && buttonValue !== buttonValueInput) {
     setButtonValueInput(buttonValue);
   }
 
@@ -63,7 +65,7 @@ function CreateCustomButton({ buttonValue, openDialog, handleCloseDialog }) {
     e.preventDefault();
     handleCloseDialog(false);
     dispatch(
-      createCustomButton({ name: buttonNameInput, value: buttonValueInput })
+      createCustomButton({ name: buttonNameInput, value: buttonValueInput, loggedInUser: loggedInUser })
     );
     setButtonNameInput("");
     setButtonValueInput("");

@@ -17,12 +17,14 @@ import {
   DoneOutlineOutlined,
   EditOutlined,
 } from "@mui/icons-material";
+import { getLoggedInUser } from "../../routes/board/diceBoardSlice";
 
 function CustomButtonsDisplay() {
   const customButtons = useSelector(getCustomButtons);
   const [openDialog, setOpenDialog] = useState(false);
   const [deleteButton, setDeleteButton] = useState(false);
   const isLoadingResults = useSelector(getIsLoadingResults);
+  const loggedInUser = useSelector(getLoggedInUser);
   const dispatch = useDispatch();
 
   const handleOpenDialog = () => {
@@ -57,7 +59,7 @@ function CustomButtonsDisplay() {
               color={deleteButton ? "error" : "primary"}
               onClick={
                 deleteButton
-                  ? () => handleButtonDelete(name)
+                  ? () => handleButtonDelete({name: name, loggedInUser: loggedInUser})
                   : () => handleButtonClick(value)
               }
               endIcon={
