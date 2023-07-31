@@ -57,7 +57,7 @@ function LogInMenu({ openDialog, handleCloseDialog }) {
     >
       {createNewProfile ? (
         <form onSubmit={handleSubmit} className="Dialog_Form">
-          <DialogTitle>CREATE NEW PROFILE</DialogTitle>
+          <DialogTitle sx={{textAlign: 'center'}}>CREATE NEW PROFILE</DialogTitle>
           <DialogContent dividers={true}>
             <TextField
               id="outlined-basic"
@@ -74,7 +74,12 @@ function LogInMenu({ openDialog, handleCloseDialog }) {
           <DialogActions
             sx={{ display: "flex", justifyContent: "space-between" }}
           >
-            <Button variant="outlined" onClick={() => setCreateNewProfile(false)}>Profiles</Button>
+            <Button
+              variant="outlined"
+              onClick={() => setCreateNewProfile(false)}
+            >
+              Profiles
+            </Button>
             <Button variant="outlined" type="submit" value="Submit">
               Sign In
             </Button>
@@ -82,12 +87,9 @@ function LogInMenu({ openDialog, handleCloseDialog }) {
         </form>
       ) : (
         <div className="Dialog_Wrapper">
-          <DialogTitle>SELECT A PROFILE</DialogTitle>
-          {userProfiles.length > 0 && (
-            <DialogContent
-              dividers={true}
-              className="NewProfileButton_Container"
-            >
+          <DialogTitle sx={{textAlign: 'center'}}>SELECT A PROFILE</DialogTitle>
+          {userProfiles.length > 0 ? (
+            <DialogContent dividers={true} className="ProfileButton_Container">
               {userProfiles.map((profile) => (
                 <Button
                   variant="contained"
@@ -96,6 +98,12 @@ function LogInMenu({ openDialog, handleCloseDialog }) {
                   {profile}
                 </Button>
               ))}
+            </DialogContent>
+          ) : (
+            <DialogContent dividers={true} className="ProfileButton_Container">
+              <Button variant="contained" disabled>
+                You have no profiles yet
+              </Button>
             </DialogContent>
           )}
           <div className="NewProfileButton_Container">

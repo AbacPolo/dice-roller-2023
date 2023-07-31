@@ -2,7 +2,7 @@
     background-color: #fff;
 }
 
-.NewProfileButton_Container {
+.ProfileButton_Container {
     display: flex;
     justify-content: center;
     flex-wrap: nowrap;
@@ -13,5 +13,6 @@
   padding-top: 1rem;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 

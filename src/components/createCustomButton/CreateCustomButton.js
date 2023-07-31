@@ -90,7 +90,7 @@ function CreateCustomButton({ buttonValue, openDialog, handleCloseDialog }) {
       className="Dialog_Container"
     >
       <form onSubmit={handleSubmit} className="Dialog_Form">
-        <DialogTitle>Create Custom Button</DialogTitle>
+        <DialogTitle sx={{textAlign: 'center'}}>Create Custom Button</DialogTitle>
         <DialogContent dividers={true}>
           <TextField
             id="outlined-basic"
