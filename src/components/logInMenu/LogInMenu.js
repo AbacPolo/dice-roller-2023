@@ -16,17 +16,20 @@ import {
 } from "../../routes/board/diceBoardSlice";
 import { fetchCustomButtons } from "../../features/controlPanel/controlPanelSlice";
 import { ArrowForward } from "@mui/icons-material";
+import { useNavigate } from "react-router";
 
 function LogInMenu({ openDialog, handleCloseDialog }) {
   const [userNameInput, setUserNameInput] = useState("");
   const userProfiles = useSelector(getUserProfiles);
   const [createNewProfile, setCreateNewProfile] = useState(false);
   const [signInError, setSignInError] = useState(false);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!userProfiles.includes(userNameInput)) {
+      navigate(`/${userNameInput}`);
       dispatch(createProfile(userNameInput));
       dispatch(fetchCustomButtons(userNameInput));
       setCreateNewProfile(false);
@@ -43,6 +46,7 @@ function LogInMenu({ openDialog, handleCloseDialog }) {
   }, [userNameInput]);
 
   const handleProfileSelection = (profile) => {
+    navigate(`/${profile}`);
     dispatch(logInProfile(profile));
     dispatch(fetchCustomButtons(profile));
     handleCloseDialog(false);
@@ -92,7 +96,7 @@ function LogInMenu({ openDialog, handleCloseDialog }) {
             <DialogContent dividers={true} className="ProfileButton_Container">
               {userProfiles.map((profile, index) => (
                 <Button
-                key={index}
+                  key={index}
                   variant="contained"
                   onClick={() => handleProfileSelection(profile)}
                 >

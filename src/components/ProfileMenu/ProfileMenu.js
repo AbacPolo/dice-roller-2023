@@ -23,6 +23,7 @@ import {
 } from "../../routes/board/diceBoardSlice";
 import { theme } from "../../styles/theme";
 import { deleteAllCustomButton } from "../../features/controlPanel/controlPanelSlice";
+import { useNavigate } from "react-router";
 
 function ProfileMenu() {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -30,6 +31,7 @@ function ProfileMenu() {
   const loggedInUser = useSelector(getLoggedInUser);
   const [deletingProfile, setDeletingProfile] = useState(false);
   const open = Boolean(anchorEl);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleClick = (event) => {
@@ -48,11 +50,13 @@ function ProfileMenu() {
   const handleDeleteProfile = () => {
     dispatch(deleteProfile(loggedInUser));
     dispatch(deleteAllCustomButton(loggedInUser));
+    navigate("/");
     handleClose();
   };
 
   const handleLogOutProfile = () => {
     dispatch(logOutProfile());
+    navigate("/");
     handleClose();
   };
 
