@@ -99,5 +99,6 @@ export const getDefaultButtons = (state) => state.controlPanel.defaultButtons;
 export const getCustomButtons = (state) => state.controlPanel.customButtons;
 export const getDiceResults = (state) => state.controlPanel.diceResults;
 export const getResultsHstory = (state) => state.controlPanel.resultsHstory;
+export const getIsLoadingResults = (state) => state.controlPanel.isLoadingResults;
 export const { createCustomButton, deleteCustomButton } = controlPanelSlice.actions;
 export default controlPanelSlice.reducer;

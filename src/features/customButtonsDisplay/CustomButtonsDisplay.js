@@ -4,6 +4,7 @@ import { Button, IconButton } from "@mui/material";
 import {
   deleteCustomButton,
   getCustomButtons,
+  getIsLoadingResults,
   getRANDOMQuota,
   getRandomIntegers,
 } from "../controlPanel/controlPanelSlice";
@@ -21,6 +22,7 @@ function CustomButtonsDisplay() {
   const customButtons = useSelector(getCustomButtons);
   const [openDialog, setOpenDialog] = useState(false);
   const [deleteButton, setDeleteButton] = useState(false);
+  const isLoadingResults = useSelector(getIsLoadingResults);
   const dispatch = useDispatch();
 
   const handleOpenDialog = () => {
@@ -62,6 +64,7 @@ function CustomButtonsDisplay() {
                 deleteButton ? <DeleteOutlineOutlined fontSize="small" /> : null
               }
               sx={{ lineHeight: 1.5, padding: "10px 16px" }}
+              disabled={isLoadingResults ? true : false}
             >
               {name}
             </Button>

@@ -9,6 +9,7 @@ import classNames from "classnames";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getDefaultButtons,
+  getIsLoadingResults,
   getRANDOMQuota,
   getRandomIntegers,
 } from "./controlPanelSlice";
@@ -19,6 +20,7 @@ function ControlPanel() {
   const [searchInput, setSearchInput] = useState("");
   const [inputError, setInputError] = useState(false);
   const defaultButtons = useSelector(getDefaultButtons);
+  const isLoadingResults = useSelector(getIsLoadingResults);
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
@@ -79,6 +81,7 @@ function ControlPanel() {
             helperText={
               inputError ? "Incorrect entry. Try with another input." : ""
             }
+            disabled={isLoadingResults ? true : false}
           />
         </form>
         <div
@@ -94,6 +97,7 @@ function ControlPanel() {
               onClick={() => handleButtonClick(button)}
               sx={{lineHeight: 1.5,
               padding: '10px 16px'}}
+              disabled={isLoadingResults ? true : false}
             >
               {button}
             </Button>
