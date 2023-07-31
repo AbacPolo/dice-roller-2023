@@ -90,8 +90,9 @@ function LogInMenu({ openDialog, handleCloseDialog }) {
           <DialogTitle sx={{textAlign: 'center'}}>SELECT A PROFILE</DialogTitle>
           {userProfiles.length > 0 ? (
             <DialogContent dividers={true} className="ProfileButton_Container">
-              {userProfiles.map((profile) => (
+              {userProfiles.map((profile, index) => (
                 <Button
+                key={index}
                   variant="contained"
                   onClick={() => handleProfileSelection(profile)}
                 >
