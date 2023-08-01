@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./ControlPanel.css";
-import { Button, IconButton, InputAdornment, TextField } from "@mui/material";
+import { Button, InputAdornment, TextField } from "@mui/material";
 import {
   KeyboardArrowDownOutlined,
   KeyboardArrowUpOutlined,
