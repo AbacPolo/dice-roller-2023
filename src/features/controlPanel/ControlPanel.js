@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "./ControlPanel.css";
-import { Button, InputAdornment, TextField } from "@mui/material";
+import { Button, IconButton, InputAdornment, TextField } from "@mui/material";
 import {
+  InfoOutlined,
   KeyboardArrowDownOutlined,
   KeyboardArrowUpOutlined,
   SearchOutlined,
@@ -89,6 +90,17 @@ function ControlPanel() {
               startAdornment: (
                 <InputAdornment position="start">
                   <SearchOutlined />
+                </InputAdornment>
+              ),
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    // onClick={handleClickShowPassword}
+                    edge="end"
+                  >
+                    <InfoOutlined />
+                  </IconButton>
                 </InputAdornment>
               ),
             }}
