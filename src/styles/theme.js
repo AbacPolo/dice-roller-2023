@@ -16,8 +16,16 @@ export const theme = createTheme({
         root: {
           textTransform: "initial",
           fontSize: "1rem",
+          fontFamily: "Outfit",
         },
       },
+    },
+    MuiTypography: {
+      styleOverrides: {
+        root: {
+          fontFamily: "Outfit",
+        },
+      }
     },
   },
 });

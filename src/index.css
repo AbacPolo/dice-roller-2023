@@ -29,15 +29,26 @@ h4,
 h5,
 h6,
 a,
-p {
+p,
+b,
+i,
+li {
   margin: 0;
-}
-
-h1 {
   font-family: "Outfit", sans-serif;
 }
 
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #000;
+}
+
 h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+h3 {
   font-size: 1rem;
   font-weight: 500;
 }

@@ -17,6 +17,11 @@
   gap: 8px;
 }
 
+.InformationDisplay_Wrapper h2,
+.InformationDisplay_Wrapper h3 {
+  color: #252525;
+}
+
 .InformationDisplay_Section {
   width: 100%;
   height: 100%;
@@ -24,7 +29,7 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
 }
 
 .InformationDisplay_Section ul {
@@ -34,7 +39,20 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
+  padding-left: 20px;
+}
+
+.InformationDisplay_Section ul li {
+  line-height: 1.5rem;
+}
+
+.InformationDisplay_Section ul b {
+  background-color: #0971f1;
+  font-weight: 500;
+  color: #fff;
+  padding: 5px 8px;
+  border-radius: 4px;
 }
 
 @media only screen and (min-width: 1241px) {
