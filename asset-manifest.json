@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/dice-roller-2023/static/css/main.800f5568.css",
-    "main.js": "/dice-roller-2023/static/js/main.351308b6.js",
+    "main.css": "/dice-roller-2023/static/css/main.b71bf227.css",
+    "main.js": "/dice-roller-2023/static/js/main.79dd5739.js",
     "static/js/787.42f948f6.chunk.js": "/dice-roller-2023/static/js/787.42f948f6.chunk.js",
     "static/media/topography.svg": "/dice-roller-2023/static/media/topography.fee9c91f83f80994957a.svg",
     "static/media/role-playing.png": "/dice-roller-2023/static/media/role-playing.548f7bb496ac0b008874.png",
     "static/media/ControlPanel_Background_2.0.svg": "/dice-roller-2023/static/media/ControlPanel_Background_2.0.6b88d50fc2a984a0f69d.svg",
     "static/media/Border_1.svg": "/dice-roller-2023/static/media/Border_1.2a5e19d8d20d93443d42.svg",
     "index.html": "/dice-roller-2023/index.html",
-    "main.800f5568.css.map": "/dice-roller-2023/static/css/main.800f5568.css.map",
-    "main.351308b6.js.map": "/dice-roller-2023/static/js/main.351308b6.js.map",
+    "main.b71bf227.css.map": "/dice-roller-2023/static/css/main.b71bf227.css.map",
+    "main.79dd5739.js.map": "/dice-roller-2023/static/js/main.79dd5739.js.map",
     "787.42f948f6.chunk.js.map": "/dice-roller-2023/static/js/787.42f948f6.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.800f5568.css",
-    "static/js/main.351308b6.js"
+    "static/css/main.b71bf227.css",
+    "static/js/main.79dd5739.js"
   ]
 }
