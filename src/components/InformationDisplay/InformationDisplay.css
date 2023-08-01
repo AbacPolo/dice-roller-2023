@@ -1,0 +1,49 @@
+.InformationDisplay_Container {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.InformationDisplay_Wrapper {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  box-sizing: border-box;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.InformationDisplay_Section {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.InformationDisplay_Section ul {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+@media only screen and (min-width: 1241px) {
+  .InformationDisplay_Container {
+    background-color: #dedede;
+  }
+
+  .InformationDisplay_Wrapper {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
