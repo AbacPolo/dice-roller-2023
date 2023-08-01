@@ -46,7 +46,7 @@
   display: none;
   width: calc(100% + 40px);
   position: absolute;
-  bottom: -430px;
+  margin-top: 2rem;
   left: -20px;
   box-sizing: border-box;
   border: 20px solid transparent;
