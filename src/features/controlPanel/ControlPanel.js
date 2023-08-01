@@ -121,8 +121,9 @@ function ControlPanel() {
                     aria-expanded={open ? "true" : undefined}
                     onClick={handleClick}
                     edge="end"
+                    sx={{color: '#0971f1'}}
                   >
-                    <InfoOutlined />
+                    <InfoOutlined/>
                   </IconButton>
                 </InputAdornment>
               ),
@@ -183,13 +184,13 @@ function ControlPanel() {
               )
             }
           >
-            <h2>Predefined Throws</h2>
+            <h3>Predefined Throws</h3>
           </Button>
         </div>
         {open === true ? (
           <div className="InfoDisplay_Desktop">
             <InformationDisplay />
-            <IconButton aria-label="delete" sx={{position: 'absolute', top: '-8px', right: '-16px'}} onClick={handleClose}>
+            <IconButton aria-label="delete" sx={{position: 'absolute', top: '-8px', right: '-16px', color: '#0971f1'}} onClick={handleClose}>
               <Close />
             </IconButton>
           </div>
