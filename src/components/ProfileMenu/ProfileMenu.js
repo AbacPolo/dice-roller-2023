@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./ProfileMenu.css";
 import {
+  Button,
   Divider,
   IconButton,
   ListItemIcon,
@@ -16,7 +17,7 @@ import {
 } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
 import {
-    deleteProfile,
+  deleteProfile,
   getIsUserLogged,
   getLoggedInUser,
   logOutProfile,
@@ -45,7 +46,7 @@ function ProfileMenu() {
 
   const handleDeleteConfirmation = () => {
     setDeletingProfile(true);
-  }
+  };
 
   const handleDeleteProfile = () => {
     dispatch(deleteProfile(loggedInUser));
@@ -70,9 +71,26 @@ function ProfileMenu() {
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
+        className="Profile_Button_Phone"
       >
         <AccountCircleOutlined />
       </IconButton>
+      <Button
+        variant="outlined"
+        endIcon={<AccountCircleOutlined />}
+        color="primary"
+        disabled={isUserLogged ? false : true}
+        id="demo-positioned-button"
+        aria-controls={open ? "demo-positioned-menu" : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? "true" : undefined}
+        onClick={handleClick}
+        className="Profile_Button_Desktop"
+        size="small"
+        disableElevation
+      >
+        Profile
+      </Button>
       <Menu
         anchorEl={anchorEl}
         id="account-menu"
@@ -88,28 +106,33 @@ function ProfileMenu() {
               ml: -0.5,
               mr: 1,
             },
-            width: '170px',
+            width: "170px",
           },
         }}
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <MenuItem onClick={handleClose} sx={{ color: '#0971f1' }}>
+        <MenuItem onClick={handleClose} sx={{ color: "#0971f1" }}>
           <ListItemIcon>
             <AccountCircle
               fontSize="large"
               color="primary"
-              sx={{ color: 'primary', paddingRight: "6px" }}
+              sx={{ color: "primary", paddingRight: "6px" }}
             />
           </ListItemIcon>
           <h3>{loggedInUser}</h3>
         </MenuItem>
         <Divider />
-        <MenuItem onClick={deletingProfile ? handleDeleteProfile : handleDeleteConfirmation} sx={{color: '#d32f2f'}}>
+        <MenuItem
+          onClick={
+            deletingProfile ? handleDeleteProfile : handleDeleteConfirmation
+          }
+          sx={{ color: "#d32f2f" }}
+        >
           <ListItemIcon>
             <DeleteForever fontSize="small" color="danger" />
           </ListItemIcon>
-          {deletingProfile ? <h4>CONFIRM</h4> : 'Delete Profile'}
+          {deletingProfile ? <h4>CONFIRM</h4> : "Delete Profile"}
         </MenuItem>
         <MenuItem onClick={handleLogOutProfile}>
           <ListItemIcon>

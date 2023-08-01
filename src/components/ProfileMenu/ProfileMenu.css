@@ -1,0 +1,21 @@
+.Profile_Button_Desktop {
+    &.MuiButtonBase-root {
+      display: none;
+    }
+  }
+
+@media only screen and (min-width: 1241px) {
+ 
+    .Profile_Button_Phone {
+      &.MuiButtonBase-root {
+        display: none;
+      }
+    }
+    
+    .Profile_Button_Desktop {
+      &.MuiButtonBase-root {
+        display: inline-flex;
+      }
+    }
+    
+  }

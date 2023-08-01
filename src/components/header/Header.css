@@ -20,23 +20,52 @@
   background: rgba(222, 222, 222, 1);
 }
 
+.Login_Button_Desktop {
+  &.MuiButtonBase-root {
+    display: none;
+  }
+}
+
 .Title_Container {
-  position: relative;
+  position: absolute;
+  width: 210px;
+  left: calc(50% - 105px)
+  
 }
 
 .Title_Container h1 {
   position: relative;
-  font-size: 1.4rem;
-  line-height: 1.4rem;
+  font-size: 2rem;
+  line-height: 2rem;
   background: rgba(222, 222, 222, 1);
   z-index: 2;
+  text-align: center;
 }
 
 .Logo_Image {
   display: block;
-  width: 4rem;
+  width: 6rem;
   position: absolute;
-  left: calc(50% - 2rem);
-  top: calc(0.75rem - 2rem);
+  left: calc(50% - 3rem);
+  top: calc(1rem - 3rem);
   z-index: 1;
+}
+
+@media only screen and (min-width: 1241px) {
+  .Header_Wrapper {
+    justify-content: space-evenly;
+  }
+
+  .Login_Button_Phone {
+    &.MuiButtonBase-root {
+      display: none;
+    }
+  }
+  
+  .Login_Button_Desktop {
+    &.MuiButtonBase-root {
+      display: inline-flex;
+    }
+  }
+  
 }
