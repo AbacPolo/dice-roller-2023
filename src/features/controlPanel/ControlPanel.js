@@ -189,7 +189,7 @@ function ControlPanel() {
         {open === true ? (
           <div className="InfoDisplay_Desktop">
             <InformationDisplay />
-            <IconButton aria-label="delete" sx={{position: 'absolute', top: '-8px', right: '-8px'}} onClick={handleClose}>
+            <IconButton aria-label="delete" sx={{position: 'absolute', top: '-8px', right: '-16px'}} onClick={handleClose}>
               <Close />
             </IconButton>
           </div>
