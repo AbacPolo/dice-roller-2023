@@ -5,7 +5,9 @@
   box-sizing: border-box;
   border: 20px solid transparent;
   border-image: url("../../images/ControlPanel_Background_2.0.svg") 6% 4% round;
+  order: 2;
 }
+
 
 .ControlPanel_Wrapper {
   width: 100%;
@@ -39,3 +41,10 @@
   align-items: center;
 }
 
+
+@media only screen and (min-width: 1240px) {
+  .ControlPanel_Container {
+    max-width: calc(25% - (4rem / 3));
+    flex-grow: 1;
+  }
+}

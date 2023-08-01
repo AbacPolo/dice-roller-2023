@@ -14,11 +14,13 @@ function Board() {
   return (
     <ThemeProvider theme={theme}>
       <div className="Board_Container">
+        <div className="Board_Container_Overlay">
         <div className="Board_Wrapper">
           <Header />
           <ControlPanel />
           {isUserLogged ? <CustomButtonsDisplay /> : null}
           <ResultsDisplay />
+        </div>
         </div>
       </div>
     </ThemeProvider>

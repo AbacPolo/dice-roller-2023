@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import "./ControlPanel.css";
-import { Button, IconButton, TextField } from "@mui/material";
+import { Button, IconButton, InputAdornment, TextField } from "@mui/material";
 import {
   KeyboardArrowDownOutlined,
   KeyboardArrowUpOutlined,
+  SearchOutlined,
 } from "@mui/icons-material";
 import classNames from "classnames";
 import { useDispatch, useSelector } from "react-redux";
@@ -82,6 +83,14 @@ function ControlPanel() {
               inputError ? "Incorrect entry. Try with another input." : ""
             }
             disabled={isLoadingResults ? true : false}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <SearchOutlined />
+                </InputAdornment>
+              ),
+            }}
+            sx={{'& .MuiOutlinedInput-root': {paddingLeft: '8px'}}}
           />
         </form>
         <div

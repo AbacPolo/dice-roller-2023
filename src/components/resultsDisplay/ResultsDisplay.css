@@ -4,9 +4,20 @@
   margin: 0;
   box-sizing: border-box;
   overflow-y: scroll;
+  order: 4;
+  scrollbar-width: none;
 }
 
-.ResultsDisplay_Wrapper{
+.ResultsDisplay_Container::-webkit-scrollbar {
+  display: none;
+}
+
+.ResultsDisplay_Container {
+  -ms-overflow-style: none;
+}
+
+
+.ResultsDisplay_Wrapper {
   width: 100%;
   height: fit-content;
   margin: 0;
@@ -18,4 +29,17 @@
   padding-bottom: 6px;
   padding-left: 6px;
   padding-right: 6px;
+}
+
+@media only screen and (min-width: 1240px) {
+  .ResultsDisplay_Container {
+    max-width: calc(55% - (4rem / 3));
+    order: 3;
+    height: calc(100% - 80px - 1rem);
+    flex-grow: 2;
+  }
+
+  .ResultsDisplay_Wrapper {
+    width: 60%;
+  }
 }

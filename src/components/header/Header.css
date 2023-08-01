@@ -6,6 +6,7 @@
   border: 30px solid transparent;
   border-image: url("../../images/ControlPanel_Background_2.0.svg")
     10 round;
+  order: 1;
 }
 
 .Header_Wrapper {
