@@ -28,7 +28,9 @@ function ControlPanel() {
     e.preventDefault();
     if (searchInput !== "") {
       setInputError(false);
-      const searchInputLength = searchInput.split("+").filter(string => string.includes('d')).length;
+      const searchInputLength = searchInput
+        .split("+")
+        .filter((string) => string.includes("d")).length;
       const diceInputFiltered = diceInputFilter(searchInput);
       if (
         diceInputFiltered !== "error" &&
@@ -90,7 +92,7 @@ function ControlPanel() {
                 </InputAdornment>
               ),
             }}
-            sx={{'& .MuiOutlinedInput-root': {paddingLeft: '8px'}}}
+            sx={{ "& .MuiOutlinedInput-root": { paddingLeft: "8px" } }}
           />
         </form>
         <div
@@ -104,8 +106,7 @@ function ControlPanel() {
               variant="contained"
               disableElevation
               onClick={() => handleButtonClick(button)}
-              sx={{lineHeight: 1.5,
-              padding: '10px 16px'}}
+              sx={{ lineHeight: 1.5, padding: "10px 16px" }}
               disabled={isLoadingResults ? true : false}
             >
               {button}
@@ -113,19 +114,20 @@ function ControlPanel() {
           ))}
         </div>
         <div className="ControlPanel_Display_Container">
-          <h2>Predefined Throws</h2>
-          <IconButton
-            variant="outlined"
+          <Button
             onClick={() => {
               setButtonMenu_Open(buttonMenu_Open ? false : true);
             }}
+            endIcon={
+              buttonMenu_Open ? (
+                <KeyboardArrowUpOutlined />
+              ) : (
+                <KeyboardArrowDownOutlined />
+              )
+            }
           >
-            {buttonMenu_Open ? (
-              <KeyboardArrowUpOutlined />
-            ) : (
-              <KeyboardArrowDownOutlined />
-            )}
-          </IconButton>
+            <h2>Predefined Throws</h2>
+          </Button>
         </div>
       </div>
     </div>

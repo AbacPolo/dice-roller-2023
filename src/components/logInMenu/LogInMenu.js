@@ -15,7 +15,7 @@ import {
   logInProfile,
 } from "../../routes/board/diceBoardSlice";
 import { fetchCustomButtons } from "../../features/controlPanel/controlPanelSlice";
-import { ArrowForward } from "@mui/icons-material";
+import { ArrowBackIosOutlined, ArrowForward } from "@mui/icons-material";
 import { useNavigate } from "react-router";
 
 function LogInMenu({ openDialog, handleCloseDialog }) {
@@ -81,10 +81,11 @@ function LogInMenu({ openDialog, handleCloseDialog }) {
             <Button
               variant="outlined"
               onClick={() => setCreateNewProfile(false)}
+              startIcon={<ArrowBackIosOutlined />}
             >
               Profiles
             </Button>
-            <Button variant="outlined" type="submit" value="Submit">
+            <Button variant="contained" type="submit" value="Submit">
               Sign In
             </Button>
           </DialogActions>
