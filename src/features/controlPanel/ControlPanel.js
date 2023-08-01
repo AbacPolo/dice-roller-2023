@@ -1,7 +1,15 @@
 import React, { useState } from "react";
 import "./ControlPanel.css";
-import { Button, InputAdornment, TextField } from "@mui/material";
 import {
+  Button,
+  IconButton,
+  InputAdornment,
+  Menu,
+  TextField,
+} from "@mui/material";
+import {
+  Close,
+  InfoOutlined,
   KeyboardArrowDownOutlined,
   KeyboardArrowUpOutlined,
   SearchOutlined,
@@ -15,6 +23,7 @@ import {
   getRandomIntegers,
 } from "./controlPanelSlice";
 import { diceInputFilter } from "../../helpers/diceInputFilter";
+import InformationDisplay from "../../components/InformationDisplay/InformationDisplay";
 
 function ControlPanel() {
   const [buttonMenu_Open, setButtonMenu_Open] = useState(false);
@@ -23,6 +32,8 @@ function ControlPanel() {
   const defaultButtons = useSelector(getDefaultButtons);
   const isLoadingResults = useSelector(getIsLoadingResults);
   const dispatch = useDispatch();
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -65,6 +76,15 @@ function ControlPanel() {
     dispatch(getRandomIntegers(diceInputFiltered[0]));
   };
 
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  console.log("open", open);
   return (
     <div className="ControlPanel_Container">
       <div className="ControlPanel_Wrapper">
@@ -91,9 +111,46 @@ function ControlPanel() {
                   <SearchOutlined />
                 </InputAdornment>
               ),
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    id="info-menu-button"
+                    aria-controls={open ? "info-menu" : undefined}
+                    aria-haspopup="true"
+                    aria-expanded={open ? "true" : undefined}
+                    onClick={handleClick}
+                    edge="end"
+                  >
+                    <InfoOutlined />
+                  </IconButton>
+                </InputAdornment>
+              ),
             }}
             sx={{ "& .MuiOutlinedInput-root": { paddingLeft: "8px" } }}
           />
+          <Menu
+            anchorEl={anchorEl}
+            id="info-menu"
+            open={open}
+            onClose={handleClose}
+            MenuListProps={{
+              elevation: 0,
+              sx: {
+                "& .MuiAvatar-root": {
+                  width: 32,
+                  height: 32,
+                  ml: -0.5,
+                  mr: 1,
+                },
+              },
+            }}
+            transformOrigin={{ horizontal: "right", vertical: "top" }}
+            anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+            className="Info_Menu"
+          >
+            <InformationDisplay />
+          </Menu>
         </form>
         <div
           className={classNames("ControlPanel_Buttons_Container", {
@@ -129,6 +186,14 @@ function ControlPanel() {
             <h2>Predefined Throws</h2>
           </Button>
         </div>
+        {open === true ? (
+          <div className="InfoDisplay_Desktop">
+            <InformationDisplay />
+            <IconButton aria-label="delete" sx={{position: 'absolute', top: '-8px', right: '-8px'}} onClick={handleClose}>
+              <Close />
+            </IconButton>
+          </div>
+        ) : null}
       </div>
     </div>
   );

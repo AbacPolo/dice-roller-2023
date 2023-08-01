@@ -17,6 +17,7 @@
   /* border: 30px solid transparent;
   border-image: url("../../images/ControlPanel_Background.png") 40 round; */
   background-color: #dedede;
+  position: relative;
 }
 
 .ControlPanel_Buttons_Container {
@@ -41,10 +42,32 @@
   align-items: center;
 }
 
+.InfoDisplay_Desktop {
+  display: none;
+  width: calc(100% + 40px);
+  position: absolute;
+  bottom: -430px;
+  left: -20px;
+  box-sizing: border-box;
+  border: 20px solid transparent;
+  border-image: url("../../images/ControlPanel_Background_2.0.svg") 6% 4% round;
+  order: 2;
+}
+
 
 @media only screen and (min-width: 1241px) {
   .ControlPanel_Container {
     max-width: calc(25% - (4rem / 3));
     flex-grow: 1;
+  }
+
+  .Info_Menu {
+    &.MuiModal-root {
+      display: none;
+    }
+  }
+
+  .InfoDisplay_Desktop {
+    display: block;
   }
 }
