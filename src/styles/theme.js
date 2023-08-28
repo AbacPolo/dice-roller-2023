@@ -18,6 +18,10 @@ export const theme = createTheme({
           fontSize: "1rem",
           fontFamily: "Outfit",
         },
+        contained: {
+          padding: "5px 15px",
+          minWidth: "auto"
+        }
       },
     },
     MuiTypography: {

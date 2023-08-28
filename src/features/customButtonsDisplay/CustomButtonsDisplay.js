@@ -59,49 +59,55 @@ function CustomButtonsDisplay() {
               color={deleteButton ? "error" : "primary"}
               onClick={
                 deleteButton
-                  ? () => handleButtonDelete({name: name, loggedInUser: loggedInUser})
+                  ? () =>
+                      handleButtonDelete({
+                        name: name,
+                        loggedInUser: loggedInUser,
+                      })
                   : () => handleButtonClick(value)
               }
               endIcon={
                 deleteButton ? <DeleteOutlineOutlined fontSize="small" /> : null
               }
-              sx={{ lineHeight: 1.5, padding: "10px 16px" }}
+              // sx={{ lineHeight: 1.5, padding: "10px 16px" }}
               disabled={isLoadingResults ? true : false}
             >
               {name}
             </Button>
           ))}
         </div>
-        <Button variant="outlined" onClick={handleOpenDialog}>
-          +
-        </Button>
-        <div className="CustomThrows_Title">
-          <h2>Custom Throws</h2>
-          {deleteButton ? (
-            <IconButton
-              aria-label="delete"
-              color="primary"
-              size="small"
-              onClick={() => setDeleteButton(false)}
-            >
-              <DoneOutlineOutlined fontSize="small" />
-            </IconButton>
-          ) : (
-            <IconButton
-              aria-label="delete"
-              color="primary"
-              size="small"
-              onClick={() => setDeleteButton(true)}
-            >
-              <EditOutlined fontSize="small" />
-            </IconButton>
-          )}
+        <div className="CustomButtons_Menu">
+          <Button variant="outlined" onClick={handleOpenDialog}>
+            +
+          </Button>
+          <div className="CustomThrows_Title">
+            <h2>Custom Throws</h2>
+            {deleteButton ? (
+              <IconButton
+                aria-label="delete"
+                color="primary"
+                size="small"
+                onClick={() => setDeleteButton(false)}
+              >
+                <DoneOutlineOutlined fontSize="small" />
+              </IconButton>
+            ) : (
+              <IconButton
+                aria-label="delete"
+                color="primary"
+                size="small"
+                onClick={() => setDeleteButton(true)}
+              >
+                <EditOutlined fontSize="small" />
+              </IconButton>
+            )}
+          </div>
+          <CreateCustomButton
+            buttonValue={""}
+            openDialog={openDialog}
+            handleCloseDialog={handleCloseDialog}
+          />
         </div>
-        <CreateCustomButton
-          buttonValue={""}
-          openDialog={openDialog}
-          handleCloseDialog={handleCloseDialog}
-        />
       </div>
     </div>
   );

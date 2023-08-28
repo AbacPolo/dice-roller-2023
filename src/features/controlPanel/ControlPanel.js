@@ -164,7 +164,7 @@ function ControlPanel() {
               variant="contained"
               disableElevation
               onClick={() => handleButtonClick(button)}
-              sx={{ lineHeight: 1.5, padding: "10px 16px" }}
+              // sx={{ lineHeight: 1.5, padding: "10px 16px" }}
               disabled={isLoadingResults ? true : false}
             >
               {button}
